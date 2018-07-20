@@ -1,0 +1,5 @@
+*.svg
+*.log
+*.mpx
+*.mps
+mpxerr.tex
