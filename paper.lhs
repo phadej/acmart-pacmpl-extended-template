@@ -1,5 +1,5 @@
 %% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
-\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+\documentclass[acmsmall,review,anonymous,nonacm]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
 %% For double-blind review submission, w/ CCS and ACM Reference
 %\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true}
 %% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
@@ -404,10 +404,7 @@ Describing alternative approaches gets between the reader and your idea
 \end{enumerate}
 
 There are various recodings of the presentation on YouTube, for example \url{https://www.youtube.com/watch?v=WP-FkUaOcOM}.
-<<<<<<< HEAD
-=======
 I recommend watching the video, the presentation, questions and comments are all very insightful.
->>>>>>> :sunrise:
 
 \section{Derek's principles}
 \label{sec:dereks-principles}
