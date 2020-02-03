@@ -1,0 +1,33 @@
+%if not lhs2tex_general_fmt_read
+%let lhs2tex_general_fmt_read = True
+
+%include polycode.fmt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proper handling of code
+
+%subst inline a         = "{\hscodestyle\ensuremath{" a "}}"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Syntax highlighting for code
+
+\colorlet{constr}{ACMPurple}
+\colorlet{term}{ACMDarkBlue}
+\colorlet{type}{ACMPurple}
+\colorlet{kind}{ACMPurple}
+
+\newcommand{\ty}[1]{{\color{type}\Conid{#1}}\global\let\lvl\ty}
+\newcommand{\con}[1]{{\color{constr}{\Conid{#1}}}\global\let\lvl\tm}
+\newcommand{\id}[1]{{\color{term}\Varid{#1}}\global\let\lvl\tm}
+\newcommand{\cl}[1]{{\color{type}\Varid{#1}}\global\let\lvl\ty}
+\newcommand{\ki}[1]{{\color{kind}\Varid{#1}}\global\let\lvl\ki}
+
+%subst keyword a        = "\keyw{" a "}"
+%subst numeral a        = "\con{" a "}"
+%subst string  a        = "\con{\text{\tt \char34 " a "\char34}}"
+%subst char    a        = "\con{\text{\tt ''" a "''}}"
+
+%include typewriter.fmt
+%include syntax-prelude.fmt
+
+%endif

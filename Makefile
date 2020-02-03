@@ -1,12 +1,15 @@
 .PHONY : all
 
+FMTSOURCES=general.fmt syntax-prelude.fmt typewriter.fmt
+
 all : paper.pdf
 
 clean : 
 	rm -rf build
 	rm -f paper.pdf
 
-build/paper.tex : paper.lhs
+build/paper.tex : paper.lhs $(FMTSOURCES)
+	mkdir -p build
 	lhs2TeX -o build/paper.tex paper.lhs
 
 # -output-directory is nice

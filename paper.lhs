@@ -12,7 +12,10 @@
 % BEGIN Oleg's additions
 
 % This is Literate Haskell file to be processed with lhs2TeX
-%include polycode.fmt
+%include general.fmt
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
 
 % ftp://ftp.funet.fi/pub/TeX/CTAN/macros/latex/contrib/prftree/prftreedoc.pdf
 \usepackage{prftree}
@@ -285,34 +288,38 @@ zipWith :: (a ->  b -> c) -> [a] -> [b] -> [c]
 zipWith k  []         []        = []
 zipWith k  (x : xs)   (y : ys)  = k x y : zipWith k xs ys
 zipWith k  _          _         = error "lengths don't match"
+
+data Maybe a = Nothing | Just a
 \end{code}
-But even it isn't related, you can (ab)use \texttt{lhs2tex},
+Or inline |Nothing == Just 2|.
+
+We shouldn't (ab)use \texttt{lhs2tex}
 to write maths like it was Haskell.
 For example we can define a category to consist of following data \citep{awodey-book}
 (your paper doesn't need to be about category theory):
 
 \begin{itemize}
-\item \emph{Objects}: |A, B, C|
-\item \emph{Arrows}: |f, g, h|
-\item For each arrow |f| there are given objects: |dom f| and |cod f| called
-the \emph{domain} and \emph{codomain} of |f|.
+\item \emph{Objects}: $A, B, C$
+\item \emph{Arrows}: $f, g, h$
+\item For each arrow $f$ there are given objects: $\dom f$ and $\cod f$ called
+the \emph{domain} and \emph{codomain} of $f$.
 \item \ldots
 \end{itemize}
 These data are required to satisfy following laws
 \begin{itemize}
 \item Associativity:
 \begin{equation}
- |f . (g . h) = (f . g) . h|
+f \circ (g \circ h) = (f \circ g) \circ h
 \end{equation}
-for all |f : A -> B|, |g : B -> C|, |h : C -> D|.
+for all $f : A \to B$, $g : B \to C$, $h : C \to D$.
 \item Unit:
 \begin{equation}
-|f . 1_A = f = 1_B . f|
+f \circ 1_A = f = 1_B \circ f
 \end{equation}
-for all |f  : A -> B|.
+for all $f : A \to B$.
 \end{itemize}
 For further example, we can present associativity law as a diagram.
-The diagram below is made with a \emph{MetaPost}%
+The diagram below is made with a \textsc{MetaPost}%
 \footnote{\url{https://tug.org/metapost.html}}.
 You might consider using \texttt{diagrams} package%
 \footnote{\url{https://archives.haskell.org/projects.haskell.org/diagrams/}}.
