@@ -37,7 +37,7 @@
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{acmart}
-[2019/12/18 v1.66 Typesetting articles for the Association for Computing Machinery]
+[2020/01/11 v1.67 Typesetting articles for the Association for Computing Machinery]
 \def\@classname{acmart}
 \InputIfFileExists{acmart-preload-hook.tex}{%
   \ClassWarning{\@classname}{%
@@ -733,6 +733,10 @@
 \AtBeginEnvironment{algorithm}{\let\@vspace\@vspace@orig
   \let\@vspacer\@vspacer@orig}
 \AtBeginEnvironment{algorithm*}{\let\@vspace\@vspace@orig
+  \let\@vspacer\@vspacer@orig}
+\AtBeginEnvironment{lstlisting}{\let\@vspace\@vspace@orig
+  \let\@vspacer\@vspacer@orig}
+\AtBeginEnvironment{lstlisting*}{\let\@vspace\@vspace@orig
   \let\@vspacer\@vspacer@orig}
 
 \RequirePackage{caption, float}
@@ -1819,7 +1823,7 @@
   \if@ACM@printccs
   \ifx\@concepts\@empty\else\bgroup
       {\@specialsection{CCS Concepts}%
-         \@concepts\par}\egroup
+         \noindent\@concepts\par}\egroup
      \fi
    \fi
    \ifx\@keywords\@empty\else\bgroup
@@ -1828,7 +1832,7 @@
        \else
          \@specialsection{Keywords}%
        \fi
-         \@keywords}\par\egroup
+         \noindent\@keywords}\par\egroup
    \fi
   \andify\authors
   \andify\shortauthors
@@ -1871,7 +1875,7 @@
   \or % siggraph
     \section*{#1}%
   \or % sigplan
-    \paragraph*{#1}%
+     \noindent\emph{\bfseries#1.}~%
   \or % sigchi
     \section*{#1}%
   \or % sigchi-a
@@ -2654,6 +2658,7 @@
   {-.5\baselineskip \@plus -2\p@ \@minus -.2\p@}%
   {-3.5\p@}%
   {\ACM@NRadjust{\@parfont\@adddotafter}}}
+
 \renewcommand\part{\@startsection{part}{9}{\z@}%
   {-10\p@ \@plus -4\p@ \@minus -2\p@}%
   {4\p@}%
@@ -2685,20 +2690,8 @@
 \or % sigplan
  \def\@secfont{\bfseries\Large\section@raggedright}
  \def\@subsecfont{\bfseries\section@raggedright}
- \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-   {-.75\baselineskip \@plus -2\p@ \@minus -.2\p@}%
-   {.25\baselineskip}%
-   {\@subsubsecfont}}
  \def\@subsubsecfont{\bfseries\section@raggedright}
- \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-   {-.5\baselineskip \@plus -2\p@ \@minus -.2\p@}%
-   {-3.5\p@}%
-   {\@parfont\@addspaceafter}}
  \def\@parfont{\bfseries\itshape}
- \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\z@}%
-   {-.5\baselineskip \@plus -2\p@ \@minus -.2\p@}%
-   {-3.5\p@}%
-   {\@subparfont\@addspaceafter}}
  \def\@subparfont{\itshape}
 \or % sigchi
  \setcounter{secnumdepth}{1}
